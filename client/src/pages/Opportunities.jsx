@@ -36,7 +36,7 @@ const Opportunities = () => {
     <div className="page">
       <div className="page-banner">
         <h1>Current Opportunities</h1>
-        <p>Browse active drives and use AI to see which ones best match your profile.</p>
+        <p>Browse active drives and find which ones best match your profile.</p>
       </div>
 
       {/* Search and Filters */}
@@ -85,14 +85,6 @@ const Opportunities = () => {
         </div>
       )}
 
-      {/* AI Note */}
-      <div className="alert alert-info mt-3">
-        <Sparkles size={16} />
-        <span>
-          <strong>Pro-tip:</strong> Click on "Find AI Matches" on any card to see which registered volunteers 
-          have the highest skill compatibility for that role.
-        </span>
-      </div>
     </div>
   );
 };

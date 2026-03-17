@@ -1,11 +1,10 @@
 // OpportunityCard.jsx — Card component for a single volunteer opportunity.
-// Includes an "AI Match" panel and an interactive Map preview.
+// Includes interactive Map preview.
 import React, { useState } from 'react';
-import { MapPin, Calendar, Users, Sparkles, ChevronDown, ChevronUp, Map as MapIcon } from 'lucide-react';
+import { MapPin, Calendar, Users, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { getOpportunityMatches } from '../services/api';
 
 // Simple mock geocoder for Demo Mode
 const getCoordinates = (location) => {
@@ -19,32 +18,7 @@ const getCoordinates = (location) => {
 };
 
 function OpportunityCard({ opportunity }) {
-  const [matches, setMatches] = useState([]);
-  const [showMatches, setShowMatches] = useState(false);
   const [showMap, setShowMap] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const toggleMatches = async () => {
-    if (showMatches) { setShowMatches(false); return; }
-    setLoading(true);
-    setError('');
-    try {
-      const { data } = await getOpportunityMatches(opportunity._id);
-      setMatches(data.matches);
-      setShowMatches(true);
-    } catch (err) {
-      setError('Could not load matches. Make sure the server is running.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const scoreColour = (score) => {
-    if (score >= 75) return '#16a34a';
-    if (score >= 40) return '#f59e0b';
-    return '#ef4444';
-  };
 
   const coords = getCoordinates(opportunity.location);
   const isRemote = opportunity.location.toLowerCase().includes('remote');
@@ -93,7 +67,7 @@ function OpportunityCard({ opportunity }) {
         )}
       </AnimatePresence>
 
-      <div>
+      <div style={{ paddingBottom: '1rem' }}>
         <p style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
           Required Skills
         </p>
@@ -105,68 +79,10 @@ function OpportunityCard({ opportunity }) {
       </div>
 
       <div className="opp-card-footer">
-        {error && <p className="form-error" style={{ marginBottom: '0.5rem' }}>{error}</p>}
-        <button
-          className={`btn btn-full ${showMatches ? 'btn-outline' : 'btn-primary'}`}
-          onClick={toggleMatches}
-          disabled={loading}
-        >
-          <Sparkles size={15} />
-          {loading ? 'Analysing…' : showMatches ? 'Hide AI Matches' : 'Find AI Matches'}
-          {showMatches ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+        <button className="btn btn-full btn-primary">
+          Apply Now
         </button>
       </div>
-
-      <AnimatePresence>
-        {showMatches && (
-          <motion.div
-            key="match-panel"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            style={{ overflow: 'hidden' }}
-          >
-            <div className="match-panel">
-              <div className="match-panel-title">
-                <Sparkles size={16} /> AI Recommended Volunteers
-              </div>
-
-              {matches.length === 0 ? (
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.87rem' }}>
-                  No matches found. Try a different skill set!
-                </p>
-              ) : (
-                <div className="match-list">
-                  {matches.slice(0, 5).map((match, idx) => (
-                    <div key={idx} className="match-item">
-                      <div className="match-avatar">
-                        {match.name.charAt(0).toUpperCase()}
-                      </div>
-                      <div className="match-info">
-                        <div className="match-name">{match.name}</div>
-                        <div className="match-meta">
-                          {match.location} &bull; {match.explanation}
-                        </div>
-                      </div>
-                      <div className="match-score-wrap">
-                        <span className="match-score" style={{ color: scoreColour(match.score) }}>
-                          {match.score}%
-                        </span>
-                        <div className="match-bar-bg">
-                          <div
-                            className="match-bar-fill"
-                            style={{ width: `${match.score}%`, background: scoreColour(match.score) }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

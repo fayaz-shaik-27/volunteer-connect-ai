@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Layout components
 import Navbar from './components/Navbar';
-import Chatbot from './components/Chatbot';
 
 // Page components
 import Home from './pages/Home';
@@ -26,12 +25,9 @@ function App() {
         <Route path="/opportunities"      element={<Opportunities />} />
       </Routes>
 
-      {/* Chatbot component */}
-      <Chatbot />
-
       {/* Global footer */}
       <footer className="footer">
-        &copy; {new Date().getFullYear()} Volunteer Connect AI &mdash; Built with AI Smart Matching
+        &copy; {new Date().getFullYear()} Volunteer Connect &mdash; Optimized for Deployment
       </footer>
     </Router>
   );

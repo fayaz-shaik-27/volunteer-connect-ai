@@ -18,7 +18,6 @@ app.use(express.json());
 // Routes (to be added)
 app.use('/api/volunteers', require('./routes/volunteerRoutes'));
 app.use('/api/opportunities', require('./routes/opportunityRoutes'));
-app.use('/api/chat', require('./routes/chatRoutes'));
 
 
 // Basic route

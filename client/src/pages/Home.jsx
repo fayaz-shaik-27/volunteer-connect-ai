@@ -16,8 +16,8 @@ function Home() {
   const features = [
     {
       icon: <Sparkles size={26} />,
-      title: 'AI Smart Matching',
-      desc: 'Our engine analyses volunteer skills against required skills and generates a percentage match score to surface the best fit.',
+      title: 'Smart Matching',
+      desc: 'Our engine analyses volunteer skills against required skills to surface the best fit for every role.',
     },
     {
       icon: <Globe size={26} />,
@@ -42,7 +42,7 @@ function Home() {
       <motion.div className="hero" {...fadeUp(0)}>
         <h1>Connecting Passion<br />with Purpose</h1>
         <p>
-          Volunteer Connect AI uses skill-based smart matching to pair passionate
+          Volunteer Connect uses skill-based smart matching to pair passionate
           individuals with the NGO opportunities where they'll have the biggest impact.
         </p>
         <div className="hero-buttons">
@@ -77,7 +77,7 @@ function Home() {
       <motion.div {...fadeUp(0.3)}>
         <h2 className="section-title">
           <span className="icon"><Sparkles size={22} /></span>
-          Why Volunteer Connect AI?
+          Why Volunteer Connect?
         </h2>
         <div className="features-grid">
           {features.map((f, i) => (
@@ -105,7 +105,7 @@ function Home() {
           {[
             { step: '01', title: 'Volunteer Registers', desc: 'Fill in skills, location & availability.' },
             { step: '02', title: 'NGO Posts Opportunity', desc: 'Describe the role, required skills & volunteer count.' },
-            { step: '03', title: 'AI Calculates Match', desc: 'The engine scores each volunteer against required skills.' },
+            { step: '03', title: 'System Calculates Match', desc: 'The engine scores each volunteer against required skills.' },
             { step: '04', title: 'Best Fits Revealed',  desc: 'NGOs see a ranked list of top volunteers instantly.' },
           ].map((h, i) => (
             <div key={i} className="feature-card" style={{ position: 'relative' }}>
