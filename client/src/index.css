@@ -1,5 +1,5 @@
 /* ============================================================
-   Global Styles — Volunteer Connect AI
+   Global Styles — Volunteer Connect
    ============================================================ */
 
 /* CSS variables for theme colours */
@@ -253,49 +253,6 @@ textarea { resize: vertical; min-height: 100px; }
 .form-hint { font-size: 0.78rem; color: var(--text-muted); }
 .form-error { font-size: 0.8rem; color: var(--danger); margin-top: 0.25rem; }
 
-/* ── AI Match Panel ─────────────────────────────────────── */
-.match-panel {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  margin-top: 1rem;
-  box-shadow: var(--shadow);
-}
-.match-panel-title { font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: var(--primary); }
-.match-list { display: flex; flex-direction: column; gap: 0.75rem; }
-.match-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 8px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-}
-.match-avatar {
-  width: 40px; height: 40px;
-  background: var(--primary-light);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--primary);
-  flex-shrink: 0;
-}
-.match-info { flex: 1; min-width: 0; }
-.match-name { font-weight: 600; font-size: 0.9rem; }
-.match-meta { font-size: 0.78rem; color: var(--text-muted); }
-.match-score-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
-.match-score {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-.match-bar-bg { width: 80px; height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
-.match-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), var(--secondary)); }
 
 /* ── Alert / Toast ──────────────────────────────────────── */
 .alert {
@@ -405,27 +362,6 @@ textarea { resize: vertical; min-height: 100px; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
 
-/* --- Chatbot Premium Styles --- */
-.chatbot-scroll::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chatbot-scroll::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.chatbot-scroll::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 
 
 @media (max-width: 640px) {
