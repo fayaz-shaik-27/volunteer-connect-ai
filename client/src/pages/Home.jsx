@@ -102,6 +102,7 @@ function Home() {
           How It Works
         </h2>
         <div className="features-grid">
+          {/* Step numbers for the "How It Works" section */}
           {[
             { step: '01', title: 'Volunteer Registers', desc: 'Fill in skills, location & availability.' },
             { step: '02', title: 'NGO Posts Opportunity', desc: 'Describe the role, required skills & volunteer count.' },
@@ -109,7 +110,7 @@ function Home() {
             { step: '04', title: 'Best Fits Revealed',  desc: 'NGOs see a ranked list of top volunteers instantly.' },
           ].map((h, i) => (
             <div key={i} className="feature-card" style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', top: 16, right: 16, fontSize: '2rem', fontWeight: 900, color: 'var(--primary-light)' }}>
+              <div className="step-number">
                 {h.step}
               </div>
               <h3 style={{ marginBottom: '0.4rem', marginTop: '0.5rem' }}>{h.title}</h3>
