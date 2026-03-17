@@ -26,8 +26,13 @@ app.get('/', (req, res) => {
     res.send('Volunteer Connect AI API is running...');
 });
 
-const PORT = process.env.PORT || 5000;
+// Export app for serverless (e.g., Vercel)
+module.exports = app;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Only listen if not running in a serverless environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}

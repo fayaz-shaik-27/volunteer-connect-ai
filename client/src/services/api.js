@@ -3,7 +3,8 @@
 import axios from 'axios';
 
 // Backend base URL — update this if deploying to production
-const API_URL = 'http://localhost:5000/api';
+// Backend base URL — uses relative path for universal deployment
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 // ── Volunteer endpoints ──────────────────────────────────
 /** Register a new volunteer */
